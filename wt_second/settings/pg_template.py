@@ -1,0 +1,29 @@
+from .base import *
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '6&2it86sy%-ti4a5mb1y72guxl3h0evft=runwxu(l^)#c8b$t'
+
+# SECURITY WARNING: define the correct hosts in production!
+ALLOWED_HOSTS = ['*'] 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'urban_prod',
+        'USER': 'u_urban',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+
+try:
+    from .local import *
+except ImportError:
+    pass
